@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <div class="max-w-lg mx-auto p-6 mt-10 bg-white rounded-lg shadow-lg">
+    <h1 class="text-2xl font-bold mb-4 text-center">Contact Us</h1>
+    <form action="/contact_us" method="POST" class="space-y-4">
+      <input type="hidden" name="user_id" value="{{ user_id }}">
+
+      <div>
+        <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+        <input type="text" id="subject" name="subject" required class="mt-1 block w-full p-2 border rounded-md">
+      </div>
+
+      <div>
+        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+        <textarea id="message" name="message" rows="5" required class="mt-1 block w-full p-2 border rounded-md"></textarea>
+      </div>
+
+      <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">
+        Submit
+      </button>
+    </form>
+  </div>
+</body>
+</html>

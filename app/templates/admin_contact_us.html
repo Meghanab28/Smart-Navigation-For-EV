@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Contact Us Messages</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admincontactus.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">ChargeMate Admin</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('admin.dashboard') }}">Home</a></li>
+                    <li><a href="{{ url_for('admin.admin_contact_us') }}">Contact Us Messages</a></li>
+                    <!-- Add other admin links here -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="admin-contact-us">
+            <h2>Contact Us Messages</h2>
+
+            {% if contact_messages %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>User</th>
+                            <th>Message</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contact in contact_messages %}
+                            <tr>
+                                <td>{{ contact.subject }}</td>
+                                <td>{{ contact.user_name }}</td>
+                                <td>{{ contact.message }}</td>
+                                <td>{{ contact.status }}</td>
+                                <td>
+                                    <!-- Add action buttons like approve, delete, etc. -->
+                                   
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No contact messages found.</p>
+            {% endif %}
+        </section>
+    </main>
+
+    
+</body>
+</html>

@@ -1,0 +1,127 @@
+/* General Page Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(https://d17ocfn2f5o4rl.cloudfront.net/wp-content/uploads/2019/03/navigation-header.jpg);
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px;
+}
+
+h1 {
+    font-size: 28px;
+    color: #003366;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Add Station Link */
+a {
+    color: #00509e;
+    font-size: 18px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #00509e;
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+/* Table Row Hover Effect */
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Form Styling for Update and Delete */
+form {
+    display: inline-block;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+input[type="text"] {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 150px;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #00509e;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #00509e;
+}
+
+/* Add Custom Styling for No Stations Available Message */
+td[colspan="6"] {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    input[type="text"] {
+        width: 120px;
+    }
+}

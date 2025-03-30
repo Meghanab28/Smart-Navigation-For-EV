@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/energytips.css') }}">
+    <title>Energy Saving Tips</title>
+</head>
+<body>
+    <header>
+        <h1>Energy Saving Tips</h1>
+    </header>
+    <main>
+        <h2>Maximize Your EV's Efficiency</h2>
+        <div>
+            <!-- Tip 1 -->
+            <div>
+                <div>
+                    <span>1. Drive Smoothly</span>
+                    <button onclick="toggleContent('content1')">+</button>
+                </div>
+                <div id="content1" style="display: none;">
+                    <p>Smooth driving can increase your EV's range by reducing energy consumption.</p>
+                    <ul>
+                        <li>Gradually accelerate from stops.</li>
+                        <li>Maintain a consistent speed.</li>
+                        <li>Avoid unnecessary hard braking.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Tip 2 -->
+            <div>
+                <div>
+                    <span>2. Monitor Tire Pressure</span>
+                    <button onclick="toggleContent('content2')">+</button>
+                </div>
+                <div id="content2" style="display: none;">
+                    <p>Proper tire pressure ensures efficiency and safety.</p>
+                    <ul>
+                        <li>Check tire pressure monthly.</li>
+                        <li>Follow manufacturer-recommended PSI levels.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Tip 3 -->
+            <div>
+                <div>
+                    <span>3. Limit Air Conditioning Use</span>
+                    <button onclick="toggleContent('content3')">+</button>
+                </div>
+                <div id="content3" style="display: none;">
+                    <p>Using air conditioning drains your EV's battery. Optimize its usage:</p>
+                    <ul>
+                        <li>Use eco-mode settings.</li>
+                        <li>Open windows at low speeds.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Tip 4 -->
+            <div>
+                <div>
+                    <span>4. Use Regenerative Braking</span>
+                    <button onclick="toggleContent('content4')">+</button>
+                </div>
+                <div id="content4" style="display: none;">
+                    <p>Regenerative braking recovers energy as you slow down:</p>
+                    <ul>
+                        <li>Enable regenerative braking mode.</li>
+                        <li>Coast to stops instead of braking hard.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 EV Energy Tips. All rights reserved.</p>
+    </footer>
+    <script>
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

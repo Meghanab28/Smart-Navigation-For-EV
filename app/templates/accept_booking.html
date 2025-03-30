@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accept Booking</title>
+</head>
+<body>
+  <h1>Accept Booking for {{ booking.slot.slot_name }}</h1>
+  <form method="POST">
+    <label for="price">Set Price:</label>
+    <input type="number" id="price" name="price" step="0.01" required>
+    <button type="submit">Accept Booking</button>
+  </form>
+</body>
+</html>

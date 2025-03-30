@@ -1,0 +1,80 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body and Container */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+    background-image: url(https://d17ocfn2f5o4rl.cloudfront.net/wp-content/uploads/2019/03/navigation-header.jpg);
+}
+
+/* Container for content */
+.container {
+    max-width: 600px; /* Adjust container width */
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h1 {
+    font-size: 28px;
+    color: #050505; /* Blue Color */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Options section - Display vertically */
+.options {
+    display: flex;
+    flex-direction: column; /* Align items in a vertical stack */
+    gap: 20px; /* Space between each option */
+}
+
+/* Each option box */
+.option {
+    background-color: #004d99; /* Blue Color */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover effect for options */
+.option:hover {
+    transform: translateY(-5px);
+    background-color: #004d99; /* Darker Blue */
+}
+
+.option a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%; /* Allow more width on smaller screens */
+    }
+}

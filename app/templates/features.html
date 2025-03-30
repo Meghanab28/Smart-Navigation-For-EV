@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart EV Navigation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/features.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">ChargeMate</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('main.home') }}">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="energy-tips">
+            <h2><a href="{{ url_for('main.energy_tips') }}">Energy Efficiency Tips</a></h2>
+            <p>Learn how to drive efficiently to extend battery life and optimize energy use.</p>
+        </section>
+ <!-- Feedback Section -->
+ <section id="feedback">
+    <h2>Feedback</h2>
+    <p>We'd love to hear your thoughts! Please share your feedback to help us improve.</p>
+    <form action="{{ url_for('main.submit_feedback') }}" method="POST">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="comments">Your Feedback:</label>
+        <textarea id="comments" name="comments" rows="4" required></textarea>
+
+        <label for="rating">Rating (1 to 5):</label>
+        <input type="number" id="rating" name="rating" min="1" max="5" required>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+</section>
+
+
+        <!-- Contact Us Section -->
+        <section class="contact-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>If you have any questions or need assistance, feel free to reach out to us.</p>
+
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <form action="{{ url_for('main.contact_us') }}" method="POST">
+                        <input type="text" name="subject" placeholder="Subject" required>
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3>Our Contact Information</h3>
+                    <p><strong>Email:</strong> info@evsmartnav.com</p>
+                    <p><strong>Phone:</strong> +123-456-7890</p>
+                    <p><strong>Address:</strong> 123 Electric Avenue, City, Country</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ChargeMate. All rights reserved.</p>
+    </footer>
+</body>
+</html>

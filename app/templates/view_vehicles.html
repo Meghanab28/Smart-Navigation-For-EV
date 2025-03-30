@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV Vehicles - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view_vehicles.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Manage Your EV Vehicles</h1>
+        <div class="profile-right">
+            <div id="profileDropdown" class="dropdown-content">
+                <a href="{{ url_for('main.profile') }}">View Profile</a>
+                <a href="{{ url_for('main.change_password') }}">Change Password</a>
+                <a href="{{ url_for('main.logout') }}">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2>Your Vehicles</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Vehicle Name</th>
+                    <th>Vehicle Type</th>
+                    <th>License Plate</th>
+                    <th>Battery Capacity (kWh)</th>
+                    <th>Range per Charge (km)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vehicle in vehicles %}
+                    <tr>
+                        <td>{{ vehicle.vehicle_name }}</td>
+                        <td>{{ vehicle.vehicle_type }}</td>
+                        <td>{{ vehicle.license_plate }}</td>
+                        <td>{{ vehicle.battery_capacity }}</td>
+                        <td>{{ vehicle.range_per_charge }}</td>
+                        <td>
+                            <a href="{{ url_for('main.update_vehicle', vehicle_id=vehicle.id) }}">Update</a>
+                            <a href="{{ url_for('main.delete_vehicle', vehicle_id=vehicle.id) }}" class="delete-link">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('main.add_vehicle') }}" class="button">Add New Vehicle</a>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById('profileDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+        document.addEventListener("click", function (event) {
+    var dropdown = document.getElementById("profileDropdown");
+    var profileIcon = document.getElementById("profileIcon");
+
+    // Toggle dropdown on profile icon click
+    if (profileIcon && profileIcon.contains(event.target)) {
+        dropdown.classList.toggle("show");
+    } else if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove("show");
+    }
+});
+    </script>
+
+</body>
+</html>

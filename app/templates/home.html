@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - ChargeMate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homestyle.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">ChargeMate</h1>
+        </div>
+    </header>
+
+    <section class="form-section">
+        <div class="form-container">
+            <h2>Create an Account</h2>
+            <p>Sign up to access smart navigation for EV charging stations.</p>
+            <form action="{{ url_for('main.register_user') }}" method="POST">
+                
+                <input type="text" name="fullname" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="text" name="Phone Number"placeholder="Phone Number" pattern="[+]{0,1}[0-9]{10,15}" required>
+
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="{{ url_for('main.login') }}">Login</a></p>
+        </div>
+    </section>
+</body>
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 ChargeMate. All Rights Reserved.</p>
+</footer>
+</html>

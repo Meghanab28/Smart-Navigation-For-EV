@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage EV Vehicles</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/userdashboard.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Manage EV Vehicles</h1>
+            <!-- Dropdown Menu -->
+            <div id="profileDropdown" class="dropdown-content">
+                <a href="{{ url_for('main.profile') }}">View Profile</a>
+                <a href="{{ url_for('main.change_password') }}">Change Password</a>
+                <a href="{{ url_for('main.logout') }}">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Manage Vehicles</h2>
+        
+        <!-- View Vehicles Link -->
+        <section>
+            <a href="{{ url_for('bp.view_vehicles') }}" class="button">View All Vehicles</a>
+        </section>
+
+        <!-- Add New Vehicle Link -->
+        <section>
+            <a href="{{ url_for('bp.add_vehicle') }}" class="button">Add New Vehicle</a>
+        </section>
+
+        <!-- Additional CRUD Operation Links (if needed) -->
+        <section>
+            <a href="{{ url_for('bp.update_vehicle', vehicle_id=1) }}" class="button">Update Vehicle</a>  <!-- Example link for update -->
+        </section>
+
+        <section>
+            <a href="{{ url_for('bp.delete_vehicle', vehicle_id=1) }}" class="button">Delete Vehicle</a>  <!-- Example link for delete -->
+        </section>
+    </div>
+</body>
+</html>

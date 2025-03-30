@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Bookings</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mybookings.css') }}">
+</head>
+<body>
+  <style>
+    /* Background image styling */
+    body {
+        background-image: url('https://d17ocfn2f5o4rl.cloudfront.net/wp-content/uploads/2019/03/navigation-header.jpg');
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat;
+        background-attachment: fixed; 
+
+  font-family: Arial, sans-serif; 
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.8); 
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #004d99;
+    color:white;
+}
+
+/* Heading styling */
+h1 {
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+</style>
+</head>
+<body>
+
+  <h1>My Bookings</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Station</th>
+        <th>Slot</th>
+        <th>Status</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for booking in bookings %}
+      <tr>
+        <td>{{ booking.station.name }}</td>
+        <td>{{ booking.slot.slot_name }}</td>
+        <td>{{ booking.status }}</td>
+        <td>{{ booking.price if booking.status == 'Accepted' else 'N/A' }}</td>
+      </tr>
+      {% endfor %}
+
+      
+    </tbody>
+  </table>
+</body>
+</html>

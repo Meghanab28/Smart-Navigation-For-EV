@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battery Health Monitoring</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/userdashboard.css') }}">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <div class="navbar">
+        <div class="profile-left">
+        </div>
+        <h1>Battery Health Monitoring</h1>
+         <!-- Dropdown Menu -->
+            <div id="profileDropdown" class="dropdown-content">
+                <a href="{{ url_for('main.profile') }}">View Profile</a>
+                <a href="{{ url_for('main.change_password') }}">Change Password</a>
+                <a href="{{ url_for('main.logout') }}">Logout</a>
+            </div>
+        </div>
+    </div>
+    <main>
+        <section id="battery-health">
+            <h2>Your Vehicle Battery Health</h2>
+            {% for vehicle in vehicles %}
+                <div class="vehicle-info">
+                    <h3>{{ vehicle.vehicle_name }} ({{ vehicle.license_plate }})</h3>
+                    <p>Battery Health: {{ vehicle.battery_health }}%</p>
+                    <p>Charge Cycles: {{ vehicle.charge_cycles }}</p>
+                </div>
+            {% endfor %}
+        </section>
+
+        <section id="battery-health-graph">
+            <h2>Battery Health vs Charge Cycles</h2>
+            <img src="data:image/png;base64,{{ graph_url }}" alt="Battery Health Graph">
+        </section>
+    </main>
+
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById('profileDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>

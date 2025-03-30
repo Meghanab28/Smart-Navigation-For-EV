@@ -1,0 +1,103 @@
+/* General Page Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #003366, #00509e); /* Dark to Light Blue */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(https://d17ocfn2f5o4rl.cloudfront.net/wp-content/uploads/2019/03/navigation-header.jpg);
+}
+
+/* Login Form Container */
+.login-container {
+    background: white;
+    color: #01070d;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+}
+
+/* Form Heading */
+.login-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Form Fields */
+.login-container div {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Labels */
+.login-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Input Fields */
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ebeef1;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    color: #333;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Input Focus Effect */
+.login-container input:focus {
+    border-color: #003366;
+    box-shadow: 0 0 8px rgba(0, 80, 158, 0.5);
+}
+
+/* Login Button */
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00509e;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Hover Effect for Button */
+.login-container button:hover {
+    background-color: #003366;
+}
+
+/* Flash Messages Styling */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+ul li {
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 400px) {
+    .login-container {
+        width: 90%;
+        padding: 20px;
+    }
+}

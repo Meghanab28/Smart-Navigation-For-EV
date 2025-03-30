@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Bookings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="bookings-container">
+        <h2>View Bookings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>User</th>
+                    <th>Station</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.id }}</td>
+                        <td>{{ booking.user.username }}</td>
+                        <td>{{ booking.station.name }}</td>
+                        <td>{{ booking.status }}</td>
+                        <td>
+                            <form method="POST" action="{{ url_for('admin.cancel_booking', booking_id=booking.id) }}">
+                                <button type="submit">Cancel Booking</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

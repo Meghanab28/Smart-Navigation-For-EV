@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
+</head>
+<body>
+    <h1>Manage Charging Stations</h1>
+    <div>
+        <a href="{{ url_for('admin.add_station') }}">Add Station</a> |
+        <a href="{{ url_for('admin.stations_admin') }}">Update/Delete/View Stations</a>
+    </div>
+
+    {% if stations %}
+    <h2>Station List</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        {% for station in stations %}
+        <tr>
+            <td>{{ station.name }}</td>
+            <td>{{ station.location }}</td>
+            <td>{{ station.status }}</td>
+            <td>
+                <form action="{{ url_for('admin.toggle_station_status', station_id=station.id) }}" method="POST">
+                    <button type="submit">Toggle Status</button>
+                </form>
+                <form action="{{ url_for('admin.delete_station') }}" method="POST">
+                    <input type="hidden" name="station-id-delete" value="{{ station.id }}">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No stations found.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update User</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Update User</h1>
+    <form action="{{ url_for('admin.update_user', user_id=user.user_id) }}" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" value="{{ user.name }}" required>
+
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" value="{{ user.email }}" required>
+
+      <label for="phone">Phone:</label>
+      <input type="text" name="phone" id="phone" value="{{ user.phone }}">
+
+      <button type="submit">Update</button>
+    </form>
+  </div>
+</body>
+</html>

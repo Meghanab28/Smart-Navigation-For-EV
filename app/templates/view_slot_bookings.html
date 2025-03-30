@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Slot Booking Requests</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Slot Booking Requests</h1>
+    {% if bookings %}
+      <table>
+        <thead>
+          <tr>
+            <th>Station</th>
+            <th>Slot</th>
+            <th>Booking Time</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for booking in bookings %}
+            <tr>
+              <td>{{ booking.station.station_name }}</td>
+              <td>{{ booking.slot.slot_name }}</td>
+              <td>{{ booking.booking_time }}</td>
+              <td>{{ booking.status }}</td>
+              <td>
+                <form action="{{ url_for('admin.accept_booking', booking_id=booking.id) }}" method="POST">
+                  <input type="number" name="price" placeholder="Price" required>
+                  <button type="submit">Accept</button>
+                </form>
+                <form action="{{ url_for('admin.reject_booking', booking_id=booking.id) }}" method="POST">
+                  <button type="submit">Reject</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No pending slot booking requests.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

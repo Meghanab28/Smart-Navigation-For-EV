@@ -1,0 +1,97 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+header {
+    background-color: #3b5998;
+    color: #fff;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+main {
+    padding: 2rem;
+}
+
+h2 {
+    color: #3b5998;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.accordion {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    border: 1px solid #3b5998;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #3b5998;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.accordion-header span {
+    flex-grow: 1;
+}
+
+.accordion-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.accordion-toggle[aria-expanded="true"] {
+    transform: rotate(45deg); /* Change + to x */
+}
+
+.accordion-content {
+    display: none;
+    padding: 1rem;
+    background-color: #e6eaf2;
+    font-size: 0.95rem;
+    color: #333;
+    border-top: 1px solid #ccc;
+}
+
+.accordion-content ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin: 0;
+    color: #3b5998;
+}
+/* Footer */
+footer {
+    background-color:#004d99; 
+    text-align: center;
+    color: white;
+    padding: 15px 0;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
+    color: white;
+}

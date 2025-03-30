@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Feedback Messages</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adminfeedback.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">ChargeMate Admin</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('admin.dashboard') }}">Home</a></li>
+                    <li><a href="{{ url_for('admin.admin_feedback') }}">Feedback Messages</a></li>
+                    <!-- Add other admin links here -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="admin-feedback">
+            <h2>Feedback Messages</h2>
+
+            {% if feedback_messages %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rating</th>
+                            <th>User</th>
+                            <th>Message</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for feedback in feedback_messages %}
+                            <tr>
+                                <td>{{ feedback.rating }}</td>
+                                <td>{{ feedback.user_name }}</td>
+                                <td>{{ feedback.comments }}</td>
+                                <td>
+                                   
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No feedback messages found.</p>
+            {% endif %}
+        </section>
+    </main>
+
+</body>
+</html>

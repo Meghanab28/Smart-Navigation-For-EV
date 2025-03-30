@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(https://d17ocfn2f5o4rl.cloudfront.net/wp-content/uploads/2019/03/navigation-header.jpg);
+}
+
+header {
+    background: #004d99;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.5em;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    
+}
+
+.form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+   
+}
+
+.form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.form-container h2 {
+    margin-bottom: 10px;
+}
+
+.form-container p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.form-container form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.form-container form button {
+    width: 100%;
+    padding: 10px;
+    background:  #004d99;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.form-container form button:hover {
+    background:  #004d99;
+}
+
+.form-container p a {
+    color:  #004d99;
+    text-decoration: none;
+}
+/* Footer */
+footer {
+    background-color:#004d99; 
+    text-align: center;
+    color: white;
+    padding: 15px 0;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
+    color: white;
+}

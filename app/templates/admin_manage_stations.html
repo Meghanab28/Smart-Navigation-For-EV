@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Stations - ChargeMate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
+
+    <!-- Load Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- LocationIQ Autocomplete -->
+    <script src="https://cdn.locationiq.com/v1/autocomplete.js" async defer></script>
+
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar and Main Content (same as before) -->
+
+    <!-- Add Station Form -->
+    <div class="main">
+        <h2>Add Charging Station</h2>
+
+        <form action="{{ url_for('admin.add_station') }}" method="POST">
+            <div class="form-group">
+                <label for="name">Station Name</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location Name</label>
+                <input type="text" name="location" id="location" required autocomplete="off">
+            </div>
+
+            <!-- Map Container -->
+            <div class="form-group">
+                <div id="map"></div>
+            </div>
+
+            <!-- Hidden Fields for Latitude and Longitude -->
+            <input type="hidden" name="latitude" id="latitude">
+            <input type="hidden" name="longitude" id="longitude">
+
+            <button type="submit">Add Station</button>
+        </form>
+    </div>
+
+    <!-- Load Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        var map = L.map('map').setView([51.505, -0.09], 13);  // Default coordinates (London)
+
+        // Add TileLayer (using LocationIQ tiles)
+        L.tileLayer('https://{s}.locationiq.com/v2/{type}/1/256/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://locationiq.com">LocationIQ</a>',
+            subdomains: ['a', 'b', 'c', 'd'],
+            type: 'streets'
+        }).addTo(map);
+
+        var marker = L.marker([51.505, -0.09]).addTo(map);  // Initial marker
+
+        // Autocomplete using LocationIQ API
+        var locationInput = document.getElementById("location");
+
+        locationInput.addEventListener("input", function() {
+            var locationName = locationInput.value;
+            if (locationName.length >= 3) {  // Only start searching when input has 3+ characters
+                fetch(`https://us1.locationiq.com/v1/search.php?key=pk.218199c167e2d299d7a2ac441eac33b2&q=${locationName}&format=json`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Clear any existing suggestions
+                        var suggestions = document.createElement('ul');
+                        suggestions.classList.add('autocomplete-suggestions');
+                        
+                        data.forEach(item => {
+                            var suggestionItem = document.createElement('li');
+                            suggestionItem.textContent = item.display_name;
+                            suggestions.appendChild(suggestionItem);
+
+                            suggestionItem.addEventListener('click', function() {
+                                // Set the value of the input to the selected suggestion
+                                locationInput.value = item.display_name;
+                                // Set the coordinates
+                                var lat = item.lat;
+                                var lon = item.lon;
+                                document.getElementById("latitude").value = lat;
+                                document.getElementById("longitude").value = lon;
+                                // Update the marker position on the map
+                                marker.setLatLng([lat, lon]);
+                                map.setView([lat, lon], 13);  // Center the map on the selected location
+                                document.body.removeChild(suggestions);  // Remove suggestions
+                            });
+                        });
+
+                        document.body.appendChild(suggestions);  // Append the suggestions list
+                    })
+                    .catch(error => console.error("Error fetching location data:", error));
+            }
+        });
+
+        // Update marker position when the map is clicked
+        map.on('click', function(e) {
+            var lat = e.latlng.lat;
+            var lon = e.latlng.lng;
+            document.getElementById("latitude").value = lat;
+            document.getElementById("longitude").value = lon;
+            marker.setLatLng([lat, lon]);
+        });
+    </script>
+</body>
+</html>

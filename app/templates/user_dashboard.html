@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV Navigation - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/userdashboard.css') }}">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <div class="navbar">
+        <style>
+              a {
+                color: black;
+                text-decoration: none;
+            }
+        </style>
+        <h1>Hello, {{ user.name }}</h1>
+            <!-- Dropdown Menu -->
+            <div id="profileDropdown" class="dropdown-content">
+                <a href="{{ url_for('main.profile') }}">Profile</a>
+                <a href="{{ url_for('main.change_password') }}">Change Password</a>
+                <a href="{{ url_for('main.logout') }}">LogOut</a>
+            </div>
+        </div>
+   <!-- Navigation Links -->
+   <!-- Inside your dashboard page -->
+<main>
+    <section id="charging-stations">
+        <h2><a href="{{ url_for('main.charging_stations') }}">Find Charging Stations</a></h2>
+    </section>
+
+    <section id="my-bookings">
+        <h2><a href="{{ url_for('main.my_bookings') }}">My Bookings</a></h2>
+    </section>
+
+    <section id="features">
+        <h2><a href="{{ url_for('main.features') }}">Features</a></h2>
+    </section>
+
+    <!-- Manage Vehicles Link -->
+    <section id="manage-vehicles">
+        <h2><a href="{{ url_for('main.view_vehicles') }}">Manage Vehicles</a></h2>
+    </section>
+    <section id="battery-health">
+        <h2><a href="{{ url_for('main.battery_health') }}">Battery Health Monitoring</a></h2>
+    </section>
+    <section id="payment_success">
+        <h2><a href="{{ url_for('main.payment_success') }}">Payment</a></h2>
+    </section>
+</main>
+
+
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById('profileDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 ChargeMate. All Rights Reserved.</p>
+</footer>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Stations - Admin Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/managestations.css') }}">
+  
+</head>
+<body>
+  <div class="container">
+    <h1>Manage Stations</h1>
+    <p>Select an option to manage stations or slots.</p>
+
+    <div class="options">
+      <div class="option">
+        <a href="{{ url_for('admin.appup') }}">Add/Modify Stations</a>
+      </div>
+      <div class="option">
+        <a href="{{ url_for('admin.toggle_station') }}">Toggle Stations</a>
+      </div>
+      <div class="option">
+        <a href="{{ url_for('admin.manage_slots') }}">Manage Slots</a>
+      </div>
+      
+    </div>
+  </div>
+</body>
+</html>

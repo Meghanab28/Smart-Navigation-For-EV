@@ -1,0 +1,117 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #000; /* Black text */
+    background-image: url(https://d17ocfn2f5o4rl.cloudfront.net/wp-content/uploads/2019/03/navigation-header.jpg);
+}
+
+/* Payment Container */
+.payment-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff; /* White background */
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.payment-container h2 {
+    text-align: center;
+    color: #003366; /* Deep Blue */
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #003366; /* Deep Blue */
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f9f9f9; /* Light background */
+    color: #000; /* Black text */
+}
+
+.form-group input:focus {
+    border: 1px solid #0056b3; /* Bright Blue */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+}
+
+/* Half-width Fields (Expiry Date and CVV) */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .half {
+    flex: 1;
+}
+
+/* Button Styles */
+button[type="submit"] {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff; /* White text */
+    background-color: #0056b3; /* Bright Blue */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button[type="submit"]:hover {
+    background-color: #003366; /* Deep Blue */
+    transform: scale(1.05);
+}
+
+button[type="submit"]:active {
+    background-color: #002244; /* Darker Blue */
+    transform: scale(1);
+}
+
+div .qr-code{
+img {
+    max-width: 100%; /* Ensures the image doesn't exceed its container width */
+    height: auto; /* Maintains aspect ratio */
+    width: 130px; /* Set a specific width */
+    border-radius: 8px; /* Optional: Adds rounded corners */
+}
+
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .payment-container {
+        padding: 15px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button[type="submit"] {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,126 @@
+/* General reset for margin and padding */
+* {
+    box-sizing: border-box;
+}
+
+/* Body and main container styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;  
+    color: #333; 
+    line-height: 1.6;
+    background-image: url(https://d17ocfn2f5o4rl.cloudfront.net/wp-content/uploads/2019/03/navigation-header.jpg);
+}
+
+.main {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;  
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+/* Header Styling */
+.header {
+    text-align: center;
+    padding: 10px;
+    
+    color: white;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.container {
+    text-align: left;
+}
+
+ .main h1{
+    font-size: 30px;
+    color:white;
+    margin:5px;
+    justify-content:flex-start;
+    padding:1px;
+    text-align:end;
+}
+.login-container {
+    text-align:start ;
+}
+
+
+
+.header h2 {
+    font-size: 2rem;
+}
+
+/* Stats Section - Flexbox Layout for Cards */
+.stats {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;  
+    margin-top: 30px;
+    width: 100%;  
+}
+
+.stat-card {
+    background-color: white;  
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid #1E2A47; 
+    width: 80%;  
+    margin-bottom: 20px; 
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.stat-card h3 {
+    font-size: 1.2rem;
+    color: #333; 
+    margin-top: 10px;
+}
+
+.stat-card a {
+    text-decoration: none;
+    color: #1E2A47; 
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.stat-card a:hover {
+    color: #000;  
+}
+
+/* Make the page responsive */
+@media (max-width: 768px) {
+    .header h2 {
+        font-size: 1.6rem;
+    }
+    .stats {
+        width: 100%;
+        padding: 10px;
+    }
+    .stat-card h3 {
+        font-size: 1rem;
+    }
+}
+
+/* Footer Styling (if needed) */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: white;
+}

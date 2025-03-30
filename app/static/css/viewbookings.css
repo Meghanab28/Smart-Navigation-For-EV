@@ -1,0 +1,88 @@
+/* General Page Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #070707;
+    color:rgb(14, 14, 14);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(https://d17ocfn2f5o4rl.cloudfront.net/wp-content/uploads/2019/03/navigation-header.jpg);
+}
+
+.bookings-container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px;
+}
+
+h2 {
+    font-size: 28px;
+    color: #f4f7fa;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #004d99;
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+/* Table Row Hover Effect */
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Button Styling for Actions */
+button {
+    padding: 8px 16px;
+    background-color: #d9534f;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #c9302c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .bookings-container {
+        width: 90%;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Vehicle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/userdashboard.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="profile-left">
+            <img src="{{ url_for('static', filename='profile-icon.png') }}" alt="Profile Icon" id="profile-left-icon" onclick="toggleDropdown()">
+        </div>
+        <h1>Add New EV Vehicle</h1>
+        <div class="profile-right">
+            <img src="{{ url_for('static', filename='profile-icon.png') }}" alt="Profile Icon" id="profile-right-icon" onclick="toggleDropdown()">
+            <!-- Dropdown Menu -->
+            <div id="profileDropdown" class="dropdown-content">
+                <a href="{{ url_for('main.profile') }}">View Profile</a>
+                <a href="{{ url_for('main.change_password') }}">Change Password</a>
+                <a href="{{ url_for('main.logout') }}">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <form action="{{ url_for('main.add_vehicle') }}" method="POST">
+            <div class="form-group">
+                <label for="vehicle_name">Vehicle Name</label>
+                <input type="text" id="vehicle_name" name="vehicle_name" placeholder="Enter vehicle name" required>
+            </div>
+            <div class="form-group">
+                <label for="vehicle_type">Vehicle Type</label>
+                <input type="text" id="vehicle_type" name="vehicle_type" placeholder="Enter vehicle type" required>
+            </div>
+            <div class="form-group">
+                <label for="license_plate">License Plate</label>
+                <input type="text" id="license_plate" name="license_plate" placeholder="Enter license plate" required>
+            </div>
+            <div class="form-group">
+                <label for="battery_capacity">Battery Capacity (kWh)</label>
+                <input type="number" step="0.1" id="battery_capacity" name="battery_capacity" placeholder="Enter battery capacity" required>
+            </div>
+            <div class="form-group">
+                <label for="range_per_charge">Range per Charge (km)</label>
+                <input type="number" step="1" id="range_per_charge" name="range_per_charge" placeholder="Enter range per charge" required>
+            </div>
+            <button type="submit" class="button">Add Vehicle</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById('profileDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>

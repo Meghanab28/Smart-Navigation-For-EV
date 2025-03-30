@@ -1,0 +1,45 @@
+/* Styling the table */
+table {
+    width: 50%; 
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+/* Styling table headers and cells */
+th, td {
+    border: 2px solid #333;
+    padding: 6px; 
+    text-align: center;
+    font-size: 14px;  
+}
+
+/* Styling table header */
+th {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+/* Styling empty cells */
+td {
+    background-color: #f9f9f9;
+    height: 30px;
+}
+
+/* Hover effect for rows */
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+    table {
+        font-size: 12px;
+        width: 90%; 
+    }
+    th, td {
+        padding: 5px; 
+    }
+}

@@ -1,0 +1,184 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    background-image: url(https://d17ocfn2f5o4rl.cloudfront.net/wp-content/uploads/2019/03/navigation-header.jpg); 
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #004d99;
+    padding: 30px 20px;
+}
+
+.navbar h1 {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.navbar .dropdown-content {
+    color: white;
+}
+
+/* Profile Dropdown */
+.navbar .dropdown-content a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Profile, Change Password, and Logout Button Styling */
+.navbar .dropdown-content a {
+    color: white !important;
+}
+
+/* Profile Icon */
+#profile-left-icon,
+#profile-right-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.profile-left {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+/* Container and Card */
+.container {
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #004d99;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: white;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    display: flex;
+    justify-content: around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    padding: 10px 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-nav a {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    text-decoration: none;
+}
+
+.bottom-nav a img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 5px;
+}
+
+.bottom-nav a.active {
+    color: #e74c3c;
+}
+
+main {
+    padding: 20px;
+}
+
+/* Hover effect for section headers */
+section {
+    background-color: white;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section h2 {
+    font-size: 1.8em;
+    color: #2b2d42;
+    margin-bottom: 10px;
+}
+
+/* Add hover effect for the whole section */
+section:hover {
+    transform: translateY(-5px); /* Moves the section up */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Creates a more prominent shadow */
+}
+
+section p {
+    font-size: 1.1em;
+    color: #333;
+    margin: 0;
+}
+/* Footer Styles */
+/* Footer */
+footer {
+    background-color:#004d99; 
+    text-align: center;
+    color: white;
+    padding: 15px 0;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
+    color: white;
+}

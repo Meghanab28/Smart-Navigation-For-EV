@@ -1,0 +1,50 @@
+<div class="container">
+  <h1>Manage Stations</h1>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/addstation.css') }}">
+  
+  <div>
+    <a href="{{ url_for('admin.add_station') }}">Add Station</a>
+  </div>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for station in stations %}
+        <tr>
+          <td>{{ station.id }}</td>
+          <td>{{ station.name }}</td>
+          <td>{{ station.location }}</td>
+          <td>{{ station.latitude }}</td>
+          <td>{{ station.longitude }}</td>
+          <td>
+            <form method="POST" action="{{ url_for('admin.delete_station') }}" style="display:inline;">
+              <input type="hidden" name="station-id-delete" value="{{ station.id }}">
+              <button type="submit">Delete</button>
+            </form>
+  
+            <form method="POST" action="{{ url_for('admin.edit_station') }}" style="display:inline;">
+              <input type="hidden" name="station-id" value="{{ station.id }}">
+              <input type="text" name="station-name-edit" placeholder="New Name" value="{{ station.name }}">
+              <input type="text" name="station-location-edit" placeholder="New Location" value="{{ station.location }}">
+              <button type="submit">Update</button>
+            </form>
+            
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="6">No stations available.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard- ChargeMate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
+</head>
+<body>
+
+     <!-- Main Content -->
+     <div class="main">
+        
+         </div>
+
+     <!-- Sidebar -->
+
+        <div class="header">
+        <h2>Welcome Admin!</h2>
+        </div>
+        <div class="stats">
+            <div class="stat-card">
+                <h3><a href="{{ url_for('admin.stations_admin') }}">Manage Stations</a></h3>
+            </div>
+            <div class="stat-card">
+                <h3><a href="{{ url_for('admin.view_bookings') }}">View Bookings</a></h3>
+            </div>
+            <div class="stat-card">
+                <h3><a href="{{ url_for('admin.view_users') }}">Users Management</a></h3>
+            </div>
+            <div class="stat-card">
+                <h3><a href="{{ url_for('admin.admin_contact_us') }}">User Queries</a></h3>
+            </div>
+            <div class="stat-card">
+                <h3><a href="{{ url_for('admin.admin_feedback') }}">User Feedback</a></h3>
+            </div>
+            <div class="stat-card">
+                <h3><a href="{{ url_for('admin.logout') }}">Logout</a></h3>
+            </div>
+</div> 
+</div>
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 ChargeMate. All Rights Reserved.</p>
+</footer>
+</body>
+
+</html>
+

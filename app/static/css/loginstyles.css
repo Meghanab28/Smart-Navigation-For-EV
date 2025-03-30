@@ -1,0 +1,73 @@
+body {
+    background-color: #f0f0f0; 
+    font-family: Arial, sans-serif;
+    color: black; 
+     
+}
+
+header {
+    background-color: #003366; 
+    padding: 5px;
+}
+
+.container {
+    text-align:left;
+}
+
+.logo {
+    color: white; /* Blue color for the logo */
+    font-size: 36px;
+}
+
+.form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff; /* White background for the form section */
+    padding: 20px;
+    background-image: url(https://d17ocfn2f5o4rl.cloudfront.net/wp-content/uploads/2019/03/navigation-header.jpg);
+}
+
+.form-container {
+    max-width: 400px;
+    width: 100%;
+    background-color: white; /* White background for the form */
+    color: black; /* Black text inside the form */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #004d99; ; /* Blue border for inputs */
+    border-radius: 4px;
+    background-color: #f9f9f9; /* Light background for inputs */
+    color: black;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #004d99; /* Blue background for the button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004d99; /* Darker blue for hover */
+}
+
+a {
+    color: #004d99; /* Blue color for the link */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

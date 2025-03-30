@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Slots</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/manageslots.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Manage Slots</h1>
+   
+    <table>
+      <thead>
+        <tr>
+          <th>Station</th>
+          <th>Slot Name</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for slot in slots %}
+          <tr>
+            <td>{{ slot.station.name }}</td>
+            <td>{{ slot.slot_name }}</td>
+            <td>{{ slot.price }}</td>
+            <td>
+              <a href="{{ url_for('admin.update_slot', slot_id=slot.id) }}">Edit</a>
+              <form action="{{ url_for('admin.delete_slot', slot_id=slot.id) }}" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

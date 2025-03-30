@@ -1,0 +1,109 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    line-height: 1.6;
+    background-image: url(https://d17ocfn2f5o4rl.cloudfront.net/wp-content/uploads/2019/03/navigation-header.jpg);
+}
+
+/* Container for the Page Content */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styling */
+h1 {
+    font-size: 2.2rem;
+    color: #003366;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #00509e;
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+/* Table Row Hover Effect */
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Action Links Styling */
+a {
+    color: #00509e;
+    font-weight: 600;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Form Button Styling */
+form button {
+    padding: 8px 16px;
+    background-color: #ed5751;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #e46d69;
+}
+
+/* Make the page responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    form button {
+        padding: 6px 12px;
+    }
+}

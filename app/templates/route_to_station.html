@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route to EV Charging Station</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #map { height: 400px; width: 100%; }
+        .route-info, .slot-selection { margin-top: 20px; }
+        .time-slot { margin: 5px 0; }
+       
+        .available { color: green; font-weight: bold; }
+        .unavailable { color: red; font-weight: bold; }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <div class="route-info" id="route-info"></div>
+
+    <div class="vehicle-selection">
+        <label for="vehicle-select">Select Vehicle: </label>
+        <select id="vehicle-select">
+            <option value="">--Select Vehicle--</option>
+        </select>
+    </div>
+
+    <div class="slot-selection">
+        <label for="slot-select">Choose Slot: </label>
+        <select id="slot-select">
+            <option value="">--Select Slot--</option>
+        </select>
+
+        <br>
+        <div id="slot-times"></div>
+
+        <br>
+        <label for="kwh-input">Enter KWh: </label>
+        <input type="number" id="kwh-input" placeholder="Enter KWh" min="1" step="0.1">
+
+        <br><br>
+        <button onclick="bookSlot()">Book Slot</button>
+    </div>
+
+    <script>
+        const locationIQApiKey = 'pk.218199c167e2d299d7a2ac441eac33b2'; // Replace with your API key
+        let map, routeLayer;
+
+        function getUrlParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        const userLat = parseFloat(getUrlParam('userLat'));
+        const userLon = parseFloat(getUrlParam('userLon'));
+        const stationLat = parseFloat(getUrlParam('stationLat'));
+        const stationLon = parseFloat(getUrlParam('stationLon'));
+        const stationName = decodeURIComponent(getUrlParam('stationName') || '');
+        const stationAddress = decodeURIComponent(getUrlParam('stationAddress') || '');
+        const stationId = parseInt(getUrlParam('stationId'));
+
+        if (!stationId) {
+            alert("No station selected. Please select a station.");
+        }
+
+        function fetchVehicles() {
+            $.ajax({
+                url: '/get_user_vehicles',
+                method: 'GET',
+                success: function(response) {
+                    const vehicleSelect = document.getElementById('vehicle-select');
+                    vehicleSelect.innerHTML = '<option value="">--Select Vehicle--</option>';
+
+                    if (!response.vehicles || response.vehicles.length === 0) {
+                        alert("No vehicles found. Please add a vehicle.");
+                        return;
+                    }
+
+                    response.vehicles.forEach(vehicle => {
+                        const option = document.createElement('option');
+                        option.value = vehicle.id;
+                        option.textContent = `${vehicle.vehicle_name} (${vehicle.license_plate})`;
+                        vehicleSelect.appendChild(option);
+                    });
+                },
+                error: function() {
+                    alert("Error fetching vehicles.");
+                }
+            });
+        }
+
+        function fetchSlots() {
+    if (!stationId) {
+        alert("No station selected.");
+        return;
+    }
+
+    fetch(`/get_slots?station_id=${stationId}`)
+        .then(response => response.json())
+        .then(data => {
+            const slotSelect = document.getElementById('slot-select');
+            slotSelect.innerHTML = '<option value="">--Select Slot--</option>';
+
+            if (!data.slots || data.slots.length === 0) {
+                alert("No slots available for this station.");
+                return;
+            }
+
+            data.slots.forEach(slot => {
+                if (!slot.slot_number) {
+                    console.warn("Skipping slot due to missing slot_number:", slot);
+                    return; // ✅ Avoid errors from missing slot_number
+                }
+
+                const option = document.createElement('option');
+                option.value = slot.slot_number; // ✅ Use `slot_number`
+                option.textContent = `Slot ${slot.slot_number}`;
+                slotSelect.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching slots:', error);
+            alert("Error fetching slots.");
+        });
+}
+
+
+        function initMap() {
+            if (isNaN(stationLat) || isNaN(stationLon)) {
+                alert("Invalid station coordinates.");
+                return;
+            }
+
+            document.getElementById('route-info').innerHTML = `Route to ${stationName} - ${stationAddress}`;
+            
+            map = L.map('map').setView([userLat, userLon], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            routeLayer = L.layerGroup().addTo(map);
+
+            L.marker([userLat, userLon]).bindPopup('Your Location').addTo(map);
+            L.marker([stationLat, stationLon]).bindPopup(stationName).addTo(map);
+
+            fetchRoute(userLat, userLon, stationLat, stationLon);
+        }
+
+        function fetchRoute(startLat, startLon, endLat, endLon) {
+            const routeUrl = `https://us1.locationiq.com/v1/directions/driving/${startLon},${startLat};${endLon},${endLat}?key=${locationIQApiKey}&overview=full&geometries=geojson`;
+
+            fetch(routeUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.routes && data.routes.length > 0) {
+                        const route = data.routes[0];
+                        const routeGeoJson = route.geometry;
+                        L.geoJSON(routeGeoJson).addTo(routeLayer);
+
+                        document.getElementById('route-info').innerHTML += `<br>Distance: ${(route.distance / 1000).toFixed(2)} km, Duration: ${(route.duration / 60).toFixed(2)} min`;
+                    } else {
+                        alert('Route not found.');
+                    }
+                })
+                .catch(() => alert('Error fetching route.'));
+        }
+
+        document.getElementById('slot-select').addEventListener('change', function () {
+            const selectedSlot = this.value;
+            if (!selectedSlot) {
+                document.getElementById('slot-times').innerHTML = '';
+                return;
+            }
+
+            fetch(`/get_slot_times?station_id=${stationId}&slot_number=${selectedSlot}`)
+                .then(response => response.json())
+                .then(data => {
+                    const slotTimes = document.getElementById('slot-times');
+                    slotTimes.innerHTML = '';
+
+                    if (!data.slots || data.slots.length === 0) {
+                        slotTimes.innerHTML = 'No time slots available.';
+                        return;
+                    }
+
+                    data.slots.forEach(slot => {
+                        let slotLabel = document.createElement('label');
+                        let slotRadio = document.createElement('input');
+                        slotRadio.type = 'radio';
+                        slotRadio.name = 'time-slot';
+                        slotRadio.value = `${slot.start} - ${slot.end}`;
+
+                        slotLabel.innerHTML = `Time: ${slot.start} - ${slot.end} (Available: ${slot.availability})`;
+                        slotLabel.className = slot.availability > 0 ? "available" : "unavailable";
+                        if (slot.availability <= 0) slotRadio.disabled = true;
+
+                        slotLabel.insertBefore(slotRadio, slotLabel.firstChild);
+                        slotTimes.appendChild(slotLabel);
+                        slotTimes.appendChild(document.createElement('br'));
+                    });
+                })
+                .catch(error => console.error('Error fetching slot times:', error));
+        });
+
+        function bookSlot() {
+            alert("Slot booked successfully!");
+        }
+
+        initMap();
+        fetchVehicles();
+        fetchSlots();
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    background-image: url(https://d17ocfn2f5o4rl.cloudfront.net/wp-content/uploads/2019/03/navigation-header.jpg);
+}
+
+/* Header */
+header {
+    background-color: #004d99;
+    color: white;
+    padding: 15px 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Messages Section */
+.admin-contact-us h2 {
+    color: #004d99;
+    text-align: center;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fff;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #004d99;
+    color: white;
+}
+
+/* Alternate row colors */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-buttons button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.approve {
+    background-color: #28a745;
+    color: white;
+}
+
+.delete {
+    background-color: #ea5d6b;
+    color: white;
+}
+
+.action-buttons button:hover {
+    opacity: 0.8;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding-top: 10px;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    main {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+}

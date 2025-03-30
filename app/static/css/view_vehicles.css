@@ -1,0 +1,117 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    background-image: url('https://d17ocfn2f5o4rl.cloudfront.net/wp-content/uploads/2019/03/navigation-header.jpg');
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #004d99;
+    color: white;
+    padding: 15px 20px;
+}
+
+/* Dropdown Menu */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 160px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show Dropdown */
+.show {
+    display: block;
+}
+
+/* Main Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #004d99;
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Table Hover Effect */
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Action Links */
+td a {
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+td a:first-child {
+    color: rgb(12, 11, 11);
+}
+
+td a.delete-link {
+    color: rgb(7, 7, 7);
+}
+
+td a:hover {
+    opacity: 0.8;
+}
+
+/* Add New Vehicle Button */
+.button {
+    display: inline-block;
+    background-color: #004d99;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #004d99;
+}

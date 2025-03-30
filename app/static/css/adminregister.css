@@ -1,0 +1,86 @@
+/* General Page Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #003366, #00509e); /* Dark to Light Blue */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(https://d17ocfn2f5o4rl.cloudfront.net/wp-content/uploads/2019/03/navigation-header.jpg);
+}
+
+/* Centered Registration Form */
+.register-container {
+    background: white;
+    color: #01060c;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+}
+
+/* Form Heading */
+.register-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Form Fields */
+.register-container div {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Labels */
+.register-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Input Fields */
+.register-container input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    color: #333;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Input Focus Effect */
+.register-container input:focus {
+    border-color: #003366;
+    box-shadow: 0 0 8px rgba(0, 80, 158, 0.5);
+}
+
+/* Submit Button */
+.register-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00509e;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Hover Effect for Button */
+.register-container button:hover {
+    background-color: #003366;
+}
+
+/* Responsive Design */
+@media (max-width: 400px) {
+    .register-container {
+        width: 90%;
+        padding: 20px;
+    }
+}

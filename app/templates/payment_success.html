@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - EV Charging Station</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
+    <style>
+        /* Basic styling for the payment form */
+        .payment-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .payment-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .payment-container button {
+            background-color: #004d99;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .payment-container button:hover {
+            background-color: #004d99;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="payment-container">
+        <h2>Payment Details</h2>
+        <form id="payment-form">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" name="card-number" placeholder="Enter card number" required>
+
+            <label for="expiry-date">Expiry Date</label>
+            <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" placeholder="Enter CVV" required>
+
+            <label for="amount">Amount</label>
+            <input type="text" id="amount" name="amount" value="100.00" readonly>
+
+            <button type="submit">Make Payment</button>
+        </form>
+
+        <div id="payment-status" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        // Dummy payment logic
+        document.getElementById('payment-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const cardNumber = document.getElementById('card-number').value;
+            const expiryDate = document.getElementById('expiry-date').value;
+            const cvv = document.getElementById('cvv').value;
+            const amount = document.getElementById('amount').value;
+
+            // Validate dummy payment details
+            if (cardNumber && expiryDate && cvv && amount) {
+                simulatePayment(cardNumber, expiryDate, cvv, amount);
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+
+        // Simulate the payment
+        function simulatePayment(cardNumber, expiryDate, cvv, amount) {
+            // Display loading status
+            document.getElementById('payment-status').innerHTML = 'Processing payment...';
+
+            // Simulate delay for processing payment
+            setTimeout(function() {
+                // Randomly determine if the payment is successful
+                const paymentSuccess = Math.random() > 0.2; // 80% success rate
+
+                if (paymentSuccess) {
+                    document.getElementById('payment-status').innerHTML = `<span style="color: green;">Payment successful! Amount: $${amount}</span>`;
+                    // Redirect user to the booking confirmation page (or success page)
+                    window.location.href = '/payment-success';
+                } else {
+                    document.getElementById('payment-status').innerHTML = `<span style="color: red;">Payment failed. Please try again.</span>`;
+                }
+            }, 2000); // Simulate 2 seconds delay for payment processing
+        }
+    </script>
+
+</body>
+</html>
